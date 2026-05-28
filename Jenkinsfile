@@ -21,13 +21,13 @@ stages {
 
     stage('Build Docker Image') {
         steps {
-            bat 'docker build -t ephraimimmanuel/calculator-app .'
+            bat 'docker build -t ephraimimmanuelh/calculator-app .'
         }
     }
 
     stage('Push Docker Image') {
         steps {
-            bat 'docker push ephraimimmanuel/calculator-app'
+            bat 'docker push ephraimimmanuelh/calculator-app'
         }
     }
 
@@ -37,7 +37,7 @@ stages {
             docker stop calculator || exit 0
             docker rm calculator || exit 0
 
-            docker run -d -p 8081:8080 --name calculator ephraimimmanuel/calculator-app
+            docker run -d -p 8081:8080 --name calculator ephraimimmanuelh/calculator-app
             '''
         }
     }
