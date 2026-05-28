@@ -25,21 +25,18 @@ stages {
         }
     }
 
-    stage('Push Docker Image') {
-        steps {
-            bat 'docker push ephraimimmanuelh/calculator-app'
-        }
+   stage('Push Docker Image') {
+    steps {
+        bat 'docker push ephraimimmanuelh/calculator-app'
     }
+}
 
     stage('Deploy Container') {
-        steps {
-            bat '''
-            docker stop calculator || exit 0
-            docker rm calculator || exit 0
-
-            docker run -d -p 8081:8080 --name calculator ephraimimmanuelh/calculator-app
-            '''
-        }
+    steps {
+        bat 'docker stop calculator || exit 0'
+        bat 'docker rm calculator || exit 0'
+        bat 'docker run -d -p 9090:80 --name calculator ephraimimmanuelh/calculator-app'
     }
+}
 }
 }
